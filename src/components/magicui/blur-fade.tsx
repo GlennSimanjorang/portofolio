@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { motion, Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer"; // pastikan ini dari react-intersection-observer
 import { useRef } from "react";
 
 interface BlurFadeProps {
@@ -13,7 +13,7 @@ interface BlurFadeProps {
   delay?: number;
   yOffset?: number;
   inView?: boolean;
-  inViewMargin?: `${number}px` | `${number}%` | string; // Tipe aman
+  inViewMargin?: `${number}px` | `${number}%` | string;
   blur?: string;
 }
 
@@ -30,6 +30,7 @@ const BlurFade = ({
 }: BlurFadeProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
+  // Gunakan versi object options, bukan (ref, options)
   const { ref: inViewRef, inView: inViewResult } = useInView({
     triggerOnce: true,
     rootMargin: inViewMargin,
@@ -48,7 +49,7 @@ const BlurFade = ({
     <motion.div
       ref={(node) => {
         ref.current = node;
-        inViewRef(node); 
+        inViewRef(node);
       }}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -58,7 +59,7 @@ const BlurFade = ({
         duration,
         ease: "easeOut",
       }}
-      className={cn("inline-block", className)} 
+      className={cn("inline-block", className)}
     >
       {children}
     </motion.div>
