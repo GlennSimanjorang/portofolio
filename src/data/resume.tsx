@@ -5,10 +5,10 @@ export const DATA = {
   name: "Glenn Martua Simanjorang",
   initials: "GLN",
   description:
-    "Seorang Fullstack Developer yang berfokus pada React, Next.js, Laravel, Node JS dan Typescript.",
+    "Seorang Fullstack Developer yang berfokus pada React, Next.js, Laravel, Node JS dan Typescript, dan ingin mngembangkan keterampilan saya di bidang ini.",
   url: "https://glennmartua.com",
   summary:
-    "Sebagai siswa tingkat akhir jurusan PPLG di SMK Taruna Bhakti. Saya tertarik untuk mendalami bagaimana perkembangan teknologi. Selama masa studi, saya sangat suka belajar hal-hal baru terkait teknologi dan memperdalam ilmu pengetahuan saya dalam hal tersebut. Saya adalah pribadi yang siap bekerja dibawah tekanan, dan teliti.",
+    "Sebagai siswa tingkat akhir jurusan PPLG di SMK Taruna Bhakti. Saya tertarik untuk mendalami bagaimana perkembangan teknologi. Selama masa studi, saya sangat suka belajar hal-hal baru terkait teknologi dan memperdalam ilmu pengetahuan saya dalam hal tersebut. Saya adalah pribadi yang siap bekerja dibawah tekanan, dan teliti serta bahasa pemogrmaan yang ingin saya dalami adalah Golang, dan Next.js.",
   avatarUrl: "/me.jpg",
   skills: ["React", "Next.js", "Typescript", "Node.js", "Laravel", "Postgres"],
   navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
