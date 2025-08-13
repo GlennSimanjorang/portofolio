@@ -6,6 +6,7 @@ export const DATA = {
   initials: "GLN",
   description:
     "Seorang Fullstack Developer yang berfokus pada React, Next.js, Laravel, Node JS dan Typescript.",
+  url: "https://glennmartua.com",
   summary:
     "Sebagai siswa tingkat akhir jurusan PPLG di SMK Taruna Bhakti. Saya tertarik untuk mendalami bagaimana perkembangan teknologi. Selama masa studi, saya sangat suka belajar hal-hal baru terkait teknologi dan memperdalam ilmu pengetahuan saya dalam hal tersebut. Saya adalah pribadi yang siap bekerja dibawah tekanan, dan teliti.",
   avatarUrl: "/me.jpg",
