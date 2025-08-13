@@ -1,22 +1,22 @@
 "use client";
 
-import { AnimatePresence, motion, useInView, Variants } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { motion, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 
 interface BlurFadeProps {
   children: React.ReactNode;
   className?: string;
-  variant?: {
-    hidden: { y: number };
-    visible: { y: number };
-  };
+  variant?: Variants;
   duration?: number;
   delay?: number;
   yOffset?: number;
   inView?: boolean;
-  inViewMargin?: string;
+  inViewMargin?: `${number}px` | `${number}%` | string; // Tipe aman
   blur?: string;
 }
+
 const BlurFade = ({
   children,
   className,
@@ -28,32 +28,40 @@ const BlurFade = ({
   inViewMargin = "-50px",
   blur = "6px",
 }: BlurFadeProps) => {
-  const ref = useRef(null);
-  const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const { ref: inViewRef, inView: inViewResult } = useInView({
+    triggerOnce: true,
+    rootMargin: inViewMargin,
+  });
+
   const isInView = !inView || inViewResult;
+
   const defaultVariants: Variants = {
     hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
-    visible: { y: -yOffset, opacity: 1, filter: `blur(0px)` },
+    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
   };
+
   const combinedVariants = variant || defaultVariants;
+
   return (
-    <AnimatePresence>
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        exit="hidden"
-        variants={combinedVariants}
-        transition={{
-          delay: 0.04 + delay,
-          duration,
-          ease: "easeOut",
-        }}
-        className={className}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      ref={(node) => {
+        ref.current = node;
+        inViewRef(node); 
+      }}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={combinedVariants}
+      transition={{
+        delay: delay + 0.04,
+        duration,
+        ease: "easeOut",
+      }}
+      className={cn("inline-block", className)} 
+    >
+      {children}
+    </motion.div>
   );
 };
 
